@@ -10,11 +10,9 @@ Below you can find a list of the experiments that will be performed and document
 |--|--|
 |[Hardware](#Hardware)| Description of the hardware to be used (Raspberry Pis, RF-433-MHZ, and cables)|
 |[Hardware Setup](#Hardware-Setup) | Description of how the hardware components will be put together|
-|[Software Setup](#Software-Setup) | Description of the software needed and how to install it |
-|Experiment 1 | Sanity check. Prove that we can put the hardware together and recreate an RFID|
-|Experiment 2 | Simulation of an replay attack|
-|Experiment 3 | Simulation of a relay attack (with basic  encryption)|
-|Experiment 4 | Simulation of a relay attack (with more advanced encryption)|
+|[Software](#Software) | Description of the software needed and how to install it |
+|[Experiments](#Experiments) | <li> Sanity check. Prove that we can put the hardware together and recreate an RFID </li> <li>Simulation of an replay attack</li><li>Simulation of a relay attack (with basic  encryption)</li><li>Simulation of a relay attack (with more advanced encryption)</li>|
+|[Credits](Credits) | People that contributed to this project|
 
 ## Hardware
 To recreate a PKE system we will need the following hardware:
@@ -25,12 +23,13 @@ To recreate a PKE system we will need the following hardware:
 - 433 MHz Transceiver
 
 ## Hardware Setup
+- IN PROGRESS
 
 ## Software
-[rpi-rf](https://pypi.org/project/rpi-rf/): Python module for sending and receiving signals on Raspberry Pi.
+- [rpi-rf](https://pypi.org/project/rpi-rf/): Python module for sending and receiving signals on Raspberry Pi.
 
-
-## Usage
+## Experiments
+- IN PROGRESS
 
 ## Credits
 This project was developed by Ariana Paz, Cameron Bost, and Cody Standridge.
