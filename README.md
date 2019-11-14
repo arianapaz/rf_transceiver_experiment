@@ -12,7 +12,7 @@ Below you can find a list of the experiments that will be performed and document
 |[Hardware Setup](#Hardware-Setup) | Description of how the hardware components will be put together|
 |[Software](#Software) | Description of the software needed and how to install it |
 |[Experiments](#Experiments) | <li> Sanity check. Prove that we can put the hardware together and recreate an RFID </li> <li>Simulation of an replay attack</li><li>Simulation of a relay attack (with basic  encryption)</li><li>Simulation of a relay attack (with more advanced encryption)</li>|
-|[Credits](Credits) | People that contributed to this project|
+|[Credits](#Credits) | People that contributed to this project|
 
 ## Hardware
 To recreate a PKE system we will need the following hardware:
