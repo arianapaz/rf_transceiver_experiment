@@ -14,7 +14,7 @@ pulselength - pulselength in microseconds
 (Use RF_Sniffer.ino to check that RF signals are being produced by the RPi's transmitter 
 or your remote control)
 */
-#include "./433utils/rc-switch/RCSwitch.h"
+#include "./lib/rc-switch/RCSwitch.h"
 #include <stdlib.h>
 #include <stdio.h>
 

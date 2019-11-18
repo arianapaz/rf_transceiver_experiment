@@ -3,7 +3,7 @@
  Command is 0 for OFF and 1 for ON
  */
 
-#include "./433utils/rc-switch/RCSwitch.h"
+#include "./lib/rc-switch/RCSwitch.h"
 #include <stdlib.h>
 #include <stdio.h>
 
