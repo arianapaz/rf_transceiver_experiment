@@ -4,16 +4,16 @@ CXXFLAGS=-DRPI
 
 all: send codesend RFSniffer
 
-send: ./433utils/rc-switch/RCSwitch.o send.o
+send: ./lib/rc-switch/RCSwitch.o send.o
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $+ -o $@ -lwiringPi -lwiringPiDev -lcrypt
 	
-codesend: ./433utils/rc-switch/RCSwitch.o codesend.o
+codesend: ./lib/rc-switch/RCSwitch.o codesend.o
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $+ -o $@ -lwiringPi -lwiringPiDev -lcrypt
 	
-RFSniffer: ./433utils/rc-switch/RCSwitch.o RFSniffer.o
+RFSniffer: ./lib/rc-switch/RCSwitch.o RFSniffer.o
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $+ -o $@ -lwiringPi -lwiringPiDev -lcrypt
 	
 
 clean:
-	$(RM) ./433utils/rc-switch/*.o *.o send codesend servo RFSniffer
+	$(RM) ./lib/rc-switch/*.o *.o send codesend servo RFSniffer
 
