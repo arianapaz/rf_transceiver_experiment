@@ -20,7 +20,7 @@ To recreate a PKE system we will need the following hardware:
 - Raspberry Pi 2 or 3 (3 of them)
   - https://www.raspberrypi.org/products/
   - https://www.amazon.com/s?k=raspberry+pi
-  ![image](/images/raspberry_pi.jpg =24x48)
+  ![image](/images/raspberry_pi.jpg | width=48)
 - 4 Amp Power Adapter (3 of them)
   - https://www.amazon.com/s?k=4A+power+adapter+raspberry+pi
   ![image](/images/adapter.jpg)
