@@ -34,7 +34,6 @@ To recreate a PKE system we will need the following hardware:
   - https://www.amazon.com/s?k=433mhz+transceiver+raspberry+pi
   <img src="/images/transceiver.png" width="360">
 - Antennas (6 of them)
-
   <img src="/images/wire.jpg" width="360">
 
 ## Hardware Setup
