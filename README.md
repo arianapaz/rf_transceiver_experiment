@@ -26,13 +26,13 @@ To recreate a PKE system we will need the following hardware:
   <img src="/images/adapter.jpg" width="360">
 - Micro SD (3 of them with at least 16GB)
   - https://www.amazon.com/s?k=micro+sd+card
-    <img src="/images/sd_card.jpg" width="360">
+  <img src="/images/sd_card.jpg" width="360">
 - Female to Female jumper cables (18 cables total)
   - https://www.amazon.com/s?k=female+to+female+cables
   <img src="/images/cables.jpg" width="360">
 - 433 MHz Transceiver (3 of them)
   - https://www.amazon.com/s?k=433mhz+transceiver+raspberry+pi
-    <img src="/images/transceiver.png" width="360">
+  <img src="/images/transceiver.png" width="360">
 - Antennas (6 of them)
 
   <img src="/images/wire.jpg" width="360">
