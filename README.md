@@ -40,8 +40,10 @@ To recreate a PKE system we will need the following hardware:
 ## Hardware Setup
 To set up the hardware follow the instructions:
 - You will need to get wire the transmitter and receiver to the Raspberry Pi
-  - Transceiver and receiver:
-  - Raspberry Pi pin locations: ![image](/images/gpio_pins.png)
+  - **Raspberry Pi pin locations**:
+  ![image](/images/gpio_pins.png)
+  - **Wiring**:
+  ![image](/images/wiring.png)
 
 
 ## Software
