@@ -15,26 +15,34 @@ RFContext::RFContext(int protocol, int pulselength){
          printf("Wiring Pi setup failed. Exiting...\n");
          throw new WiringPiException();
     }
-    rcSwitch = RCSwitch();
-    if (protocol != 0) rcSwitch.setProtocol(protocol);
-    if (pulselength != 0) rcSwitch.setPulseLength(pulselength);
-    rcSwitch.enableTransmit(PIN_SEND);
-    rcSwitch.enableReceive(PIN_RECEIVE);
+    rcSwitchSend = RCSwitch();
+    rcSwitchReceive = RCSwitch();
+    if (protocol != 0) {
+        rcSwitchSend.setProtocol(protocol);
+        rcSwitchReceive.setProtocol(protocol);
+    }
+    if (pulselength != 0){
+         rcSwitchSend.setPulseLength(pulselength);
+         rcSwitchReceive.setPulseLength(pulselength);
+     }
+    rcSwitchSend.enableTransmit(PIN_SEND);
+    rcSwitchReceive.enableReceive(PIN_RECEIVE);
 }
 
 void RFContext::send_code(int code){
     printf("Sending %i...\n", code);
-    rcSwitch.send(code, 24);
+    rcSwitchSend.send(code, 24);
 }
 
 bool RFContext::available(){
-    return rcSwitch.available();
+    return rcSwitchReceive.available() || rcSwitchSend.available();
 }
 
 int RFContext::getReceivedValue(){
-    return rcSwitch.getReceivedValue();
+    return rcSwitchReceive.getReceivedValue();
 }
 
 void RFContext::resetAvailable(){
-    rcSwitch.resetAvailable();
+    rcSwitchReceive.resetAvailable();
+    rcSwitchSend.resetAvailable();
 }

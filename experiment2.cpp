@@ -4,11 +4,7 @@
 int RESPONSE_CODE = 420;
 int CHALLENGE_CODE = 210;
 
-unsigned long CHALLENGE_INTERVAL = 200;
-
-void respond(RFContext& sender, int receivedValue){
-	sender.send_code(RESPONSE_CODE);
-}
+unsigned long CHALLENGE_INTERVAL = 20000;
 
 // Car
 int main(int argc, char *argv[]){
@@ -49,8 +45,9 @@ int main(int argc, char *argv[]){
 				}
 				
 				fflush(stdout);
-				sender.resetAvailable();
 		  }
+		  
+		sender.resetAvailable();
 	  }
 	  // Key
 	  else{
@@ -69,14 +66,16 @@ int main(int argc, char *argv[]){
 				// Good code
 				if(value == CHALLENGE_CODE){
 					printf("Challenge message received (%i). Sending response...\n", value);
-					respond(sender, value);
+					usleep(1000);
+					sender.resetAvailable();
+					sender.send_code(RESPONSE_CODE);
 				}
 			}
 			fflush(stdout);
 			sender.resetAvailable();
 		  }
 	  }
-      usleep(10000);	// Sleep for 0.01 seconds
+      usleep(100);	// Sleep for 0.0001 seconds
       iterCount++;
 	}
 }
