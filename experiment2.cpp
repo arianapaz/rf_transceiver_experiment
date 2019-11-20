@@ -4,7 +4,7 @@
 int RESPONSE_CODE = 420;
 int CHALLENGE_CODE = 210;
 
-unsigned long CHALLENGE_INTERVAL = 20000;
+unsigned long CHALLENGE_INTERVAL = 1;
 
 // Car
 int main(int argc, char *argv[]){
@@ -72,10 +72,10 @@ int main(int argc, char *argv[]){
 				}
 			}
 			fflush(stdout);
-			sender.resetAvailable();
 		  }
+		sender.resetAvailable();
 	  }
-      usleep(100);	// Sleep for 0.0001 seconds
+      usleep(1000000);	// Sleep for 1 seconds
       iterCount++;
 	}
 }

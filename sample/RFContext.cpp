@@ -30,7 +30,7 @@ RFContext::RFContext(int protocol, int pulselength){
 }
 
 void RFContext::send_code(int code){
-    printf("Sending %i...\n", code);
+    // printf("Sending %i...\n", code);
     rcSwitchSend.send(code, 24);
 }
 
