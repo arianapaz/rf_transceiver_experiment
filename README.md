@@ -43,7 +43,7 @@ To set up the hardware follow the instructions:
   - **Raspberry Pi pin locations**:
   ![image](/images/gpio_pins.png)
   - **Wiring**:
-  ![image](/images/wiring.png)
+  <img src="/images/wiring.png" width="480">
 
 
 ## Software
