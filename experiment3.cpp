@@ -6,7 +6,7 @@
 using namespace std;
 const int SEED = 345091389;
 
-const int CHALLENGE_INTERVAL = 30000;
+const int CHALLENGE_INTERVAL = 10000;
 
 queue<int> codeCache;
 const int CACHE_SIZE = 250;
