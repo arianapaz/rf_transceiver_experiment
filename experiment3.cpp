@@ -95,16 +95,18 @@ int main(int argc, char *argv[]){
 				else {
 					printf("Received %i\n", value);
 					
-					queue <int> copyCache = codeCache;
+					queue<int> copyCache = codeCache;
+					int cacheIdx = 0;
 					while(!copyCache.empty()){
 						int code = copyCache.front();
-						printf("Comparing to expected code %i.\n", code);
+						printf("%i. Comparing to expected code %i.\n", cacheIdx, code);
 						if(value == code) {
 							printf("Rolling code accepted (%i). Car is unlocked.\n", code);
 							shiftCode(code);
 							printf("New challenge code (%i).\n", currentCode);
 						}
 						copyCache.pop();
+						cacheIdx++;
 					}
 				}
 				fflush(stdout);
