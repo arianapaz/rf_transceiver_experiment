@@ -94,7 +94,7 @@ int main(int argc, char *argv[]){
 				}
 				else {
 					printf("Received %i\n", value);
-					if(find (codes.begin(), codes.end(), value) == codes.end()){
+					if(find (codeCache.begin(), codeCache.end(), value) == codeCache.end()){
 						printf("Rolling code accepted (%i). Car is unlocked.\n", code);
 						shiftCode(code);
 						printf("New challenge code (%i).\n", currentCode);
