@@ -103,6 +103,9 @@ int main(int argc, char *argv[]){
 				}
 				// Find b
 				b = (codes[1] - a * codes[0]) % result;
+				while(b < 0){
+					b += result;
+				}
 				printf("A:%d,B:%d,M:%d\n", a, b, result);
 				CRACKED = true;
 			}
