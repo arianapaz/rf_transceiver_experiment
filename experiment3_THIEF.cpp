@@ -54,7 +54,7 @@ long nextRandom(long s, long a, long b, long m)
 int main(int argc, char *argv[]){
 	RFContext ctx = RFContext();
 	vector<long> codes, t, u;
-	long a, b, m = 0;
+	long a = 0, b = 0, m = 1;
 	bool CRACKED = false;
 	
 	
