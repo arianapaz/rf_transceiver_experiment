@@ -71,9 +71,9 @@ int main(int argc, char *argv[]){
 				if (find (codes.begin(), codes.end(), value) == codes.end()){
 					codes.push_back(value);
 					printf("GOT CODE %i\n", value);
-					ctx.send_code(value);
-					printf("SENT CODE %i\n", value);
 				}
+				ctx.send_code(value);
+				printf("SENT CODE %i\n", value);
 			}
 			if(codes.size() >= 10 && !CRACKED)
 			{
