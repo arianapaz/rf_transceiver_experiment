@@ -117,6 +117,7 @@ int main(int argc, char *argv[]){
 					int tCode = codes[i];
 					printf("SENDING SCANNED CODE %i\n", tCode);
 					ctx.send_code(tCode);
+					usleep(500000);
 				}
 			}
 			fflush(stdout);
