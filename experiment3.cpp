@@ -1,7 +1,7 @@
 #include "sample/RFContext.h"
 #include <unistd.h>
 #include <stdlib.h>
-#include <queue>
+#include <vector>
 
 using namespace std;
 const long SEED = 425;
@@ -12,7 +12,7 @@ const long RAND_M = 8388608; // 2^23
 
 const int CHALLENGE_INTERVAL = 10000*3;
 
-queue<int> codeCache;
+vector<int> codeCache;
 const int CACHE_SIZE = 250;
 int currentCode = 0;
 
@@ -30,7 +30,7 @@ long random(long s)
 void setupQueue(long rnd){
 	currentCode = random(rnd);
 	for(int i = 0; i < CACHE_SIZE; i++){
-		codeCache.push(random(currentCode));
+		codeCache.push_back(random(currentCode));
 	}
 }
 
@@ -43,12 +43,12 @@ void setupQueue(long rnd){
 void shiftCode(int value){
 	currentCode = codeCache.front();
 	while (currentCode != value) {
-		codeCache.pop();
-		codeCache.push(random(currentCode));
+		codeCache.erase(codeCache.begin());
+		codeCache.push_back(random(currentCode));
 		currentCode = codeCache.front();
 	}
-	codeCache.pop();
-	codeCache.push(random(currentCode));
+	codeCache.erase(codeCache.begin());
+	codeCache.push_back(random(currentCode));
 }
 
 /**
@@ -95,18 +95,10 @@ int main(int argc, char *argv[]){
 				else {
 					printf("Received %i\n", value);
 					
-					queue<int> copyCache = codeCache;
-					int cacheIdx = 0;
-					while(!copyCache.empty()){
-						int code = copyCache.front();
-						printf("%i. Comparing to expected code %i.\n", cacheIdx, code);
-						if(value == code) {
-							printf("Rolling code accepted (%i). Car is unlocked.\n", code);
-							shiftCode(code);
-							printf("New challenge code (%i).\n", currentCode);
-						}
-						copyCache.pop();
-						cacheIdx++;
+					if(find(codeCache.begin(), codeCache.end(), value) != codeCache.end()){
+						printf("Rolling code accepted (%i). Car is unlocked.\n", value);
+						shiftCode(value);
+						printf("New challenge code (%i).\n", currentCode);
 					}
 				}
 				fflush(stdout);
