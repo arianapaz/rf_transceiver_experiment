@@ -128,7 +128,7 @@ int main(int argc, char *argv[]){
 				if(value == currentCode){
 					usleep(1000);
 					ctx.resetAvailable();
-					long temp = random(currentCode)
+					long temp = random(currentCode);
 					ctx.send_code(temp);
 					printf("Challenge message received (%i). Sending response (%i)...\n", value, temp);
 				}

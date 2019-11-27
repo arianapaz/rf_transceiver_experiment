@@ -95,14 +95,14 @@ int main(int argc, char *argv[]){
 				}
 				m = result;
 				// Find A
-				GCDReturn modInv = xgcd(rnd[1]-rnd[0], result);
+				GCDReturn modInv = xgcd(codes[1]-codes[0], result);
 				long aInv = modInv.b % result;
-				a = ((rnd[2] - rnd[1]) * aInv) % result;
+				a = ((codes[2] - codes[1]) * aInv) % result;
 				if (a < 0) {
 					a += result;
 				}
 				// Find b
-				b = (rnd[1] - a * rnd[0]) % result;
+				b = (codes[1] - a * codes[0]) % result;
 				printf("A:%d,B:%d,M:%d\n", a, b, result);
 				CRACKED = true;
 			}
