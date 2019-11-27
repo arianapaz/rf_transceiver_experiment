@@ -71,6 +71,8 @@ int main(int argc, char *argv[]){
 				if (find (codes.begin(), codes.end(), value) == codes.end()){
 					codes.push_back(value);
 					printf("GOT CODE %i\n", value);
+					ctx.send_code(value);
+					printf("SENT CODE %i\n", value);
 				}
 			}
 			if(codes.size() >= 10 && !CRACKED)
@@ -107,11 +109,9 @@ int main(int argc, char *argv[]){
 				CRACKED = true;
 			}
 			// If time to yell, do
-			if(codes.size() > 0 && iterCount % BROADCAST_INTERVAL == 0){
-				printf("YELLIN\n");
+			if(CRACKED && iterCount % BROADCAST_INTERVAL == 0){
 				long nextValue = nextRandom(value, a, b, m);
-				ctx.send_code(nextValue);
-				ctx.send_code(codes[0]);
+				printf("Next code in the sequence will be: %ld \n", nextValue);
 			}
 			fflush(stdout);
 		}
