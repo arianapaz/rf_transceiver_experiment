@@ -70,7 +70,7 @@ int main(int argc, char *argv[]){
 				// If not dup
 				if (find (codes.begin(), codes.end(), value) == codes.end()){
 					codes.push_back(value);
-					printf("GOT CODE %i\n", value);
+					printf("SENDING SCANNED CODE %i\n", value);
 				}
 			}
 			if(codes.size() >= 10 && !CRACKED)
