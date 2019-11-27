@@ -78,12 +78,12 @@ int main(int argc, char *argv[]){
 		if(isCar){
 			// Introduction
 			if(first){
-				printf("HELLO I AM CAR\n");
+				printf("HELLO I AM CAR\nBASE CODE IS %i\n", currentCode);
 				first = false;
 			}
 			if(iterCount % CHALLENGE_INTERVAL == 0){
+				printf("Sending challenge message...\n");
 				ctx.send_code(currentCode);
-				printf("sending some shiet \n");
 			}
 			// Receive incoming messages
 			if (ctx.available()) {
@@ -101,6 +101,7 @@ int main(int argc, char *argv[]){
 						if(value == code) {
 							printf("Rolling code accepted (%i). Car is unlocked.\n", code);
 							shiftCode(code);
+							printf("New challenge code (%i).\n", currentCode);
 						}
 						copyCache.pop();
 					}
@@ -124,6 +125,7 @@ int main(int argc, char *argv[]){
 			  printf("ERR: Unknown encoding\n");
 			}
 			else{
+				printf("Received message %i\n", value);
 				// Good code
 				if(value == currentCode){
 					usleep(1000);
