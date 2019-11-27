@@ -107,10 +107,11 @@ int main(int argc, char *argv[]){
 				CRACKED = true;
 			}
 			// If time to yell, do
-			if(iterCount % BROADCAST_INTERVAL == 0){
+			if(codes.size() > 0 && iterCount % BROADCAST_INTERVAL == 0){
 				printf("YELLIN\n");
 				long nextValue = nextRandom(value, a, b, m);
 				ctx.send_code(nextValue);
+				ctx.send_code(codes[0]);
 			}
 			fflush(stdout);
 		}
