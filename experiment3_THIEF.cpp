@@ -113,8 +113,11 @@ int main(int argc, char *argv[]){
 			if(codes.size() > 0 && iterCount % BROADCAST_INTERVAL == 0){
 				long nextValue = nextRandom(value, a, b, m);
 				printf("Next code in the sequence will be: %ld \n", nextValue);
-				ctx.send_code(value);
-				printf("SENDING PREVIOUS CODE %i\n", value);
+				for(int i = 0; i < codes.size(); i++){
+					int tCode = codes[i];
+					printf("SENDING SCANNED CODE %i\n", tCode);
+					ctx.send_code(tCode);
+				}
 			}
 			fflush(stdout);
 		}
