@@ -10,7 +10,7 @@ const long RAND_B = 11;
 const long RAND_M = 1073741824;
 
 
-const int CHALLENGE_INTERVAL = 10000;
+const int CHALLENGE_INTERVAL = 10000*3;
 
 queue<int> codeCache;
 const int CACHE_SIZE = 250;
