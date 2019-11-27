@@ -96,7 +96,7 @@ int main(int argc, char *argv[]){
 					printf("Received %i\n", value);
 					
 					queue <int> copyCache = codeCache;
-					for(int i = 0; i < copyCache.size(); i++) {
+					while(!copyCache.empty()){
 						int code = copyCache.front();
 						printf("Comparing to expected code %i.\n", code);
 						if(value == code) {
