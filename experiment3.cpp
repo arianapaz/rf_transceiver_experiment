@@ -4,22 +4,33 @@
 #include <queue>
 
 using namespace std;
-const int SEED = 345091389;
+const long SEED = 425;
+const long RAND_A = 153;
+const long RAND_B = 11;
+const long RAND_M = 1073741824;
+
 
 const int CHALLENGE_INTERVAL = 10000;
 
 queue<int> codeCache;
 const int CACHE_SIZE = 250;
 int currentCode = 0;
-int six_digit = 1000000;
+
+/**
+ * Linear Congruential Generator to generate random numbers
+ */
+long random(long s)
+{
+	return ((RAND_A * s)%RAND_M + RAND_B) % RAND_M;
+}
 
 /**
  * Setup the code cache by adding CACHE_SIZE codes to accepted set.
  */
-void setupQueue(){
-	currentCode = rand() % six_digit;
+void setupQueue(long rnd){
+	currentCode = random(rnd);
 	for(int i = 0; i < CACHE_SIZE; i++){
-		codeCache.push(rand() % six_digit);
+		codeCache.push(random(currentCode));
 	}
 }
 
@@ -33,11 +44,11 @@ void shiftCode(int value){
 	currentCode = codeCache.front();
 	while (currentCode != value) {
 		codeCache.pop();
-		codeCache.push(rand() % six_digit);
+		codeCache.push(random(currentCode));
 		currentCode = codeCache.front();
 	}
 	codeCache.pop();
-	codeCache.push(rand() % six_digit);
+	codeCache.push(random(currentCode));
 }
 
 /**
@@ -56,8 +67,8 @@ int main(int argc, char *argv[]){
 	
 	RFContext ctx = RFContext();
 	
-	srand(SEED);
-	setupQueue();
+	long rnd = random(SEED);
+	setupQueue(rnd);
 	
 	// Run forever
 	unsigned long iterCount = 0;
@@ -115,10 +126,11 @@ int main(int argc, char *argv[]){
 			else{
 				// Good code
 				if(value == currentCode){
-					printf("Challenge message received (%i). Sending response...\n", value);
 					usleep(1000);
 					ctx.resetAvailable();
-					ctx.send_code(rand() % six_digit);
+					long temp = random(currentCode)
+					ctx.send_code(temp);
+					printf("Challenge message received (%i). Sending response (%i)...\n", value, temp);
 				}
 			}
 			fflush(stdout);
