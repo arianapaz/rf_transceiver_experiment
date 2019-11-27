@@ -7,7 +7,7 @@ using namespace std;
 const long SEED = 425;
 const long RAND_A = 153;
 const long RAND_B = 11;
-const long RAND_M = 1073741824;
+const long RAND_M = 8388608; // 2^23
 
 
 const int CHALLENGE_INTERVAL = 10000*3;
