@@ -7,7 +7,7 @@
 
 using namespace std;
 
-const int BROADCAST_INTERVAL = 3000;
+const int BROADCAST_INTERVAL = 30000;
 
 struct GCDReturn {
 	int a, b, c;
@@ -72,8 +72,6 @@ int main(int argc, char *argv[]){
 					codes.push_back(value);
 					printf("GOT CODE %i\n", value);
 				}
-				ctx.send_code(value);
-				printf("SENT CODE %i\n", value);
 			}
 			if(codes.size() >= 10 && !CRACKED)
 			{
@@ -109,9 +107,11 @@ int main(int argc, char *argv[]){
 				CRACKED = true;
 			}
 			// If time to yell, do
-			if(CRACKED && iterCount % BROADCAST_INTERVAL == 0){
+			if(iterCount % BROADCAST_INTERVAL == 0){
 				long nextValue = nextRandom(value, a, b, m);
 				printf("Next code in the sequence will be: %ld \n", nextValue);
+				ctx.send_code(value);
+				printf("SENDING PREVIOUS CODE %i\n", value);
 			}
 			fflush(stdout);
 		}
