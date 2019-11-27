@@ -13,6 +13,9 @@ const int CACHE_SIZE = 250;
 int currentCode = 0;
 int six_digit = 1000000;
 
+/**
+ * Setup the code cache by adding CACHE_SIZE codes to accepted set.
+ */
 void setupQueue(){
 	currentCode = rand() % six_digit;
 	for(int i = 0; i < CACHE_SIZE; i++){
@@ -20,6 +23,12 @@ void setupQueue(){
 	}
 }
 
+/**
+ * Update codes that car is expecting by removing
+ * received code from cache.
+ * 
+ * @param value code that was received
+ */
 void shiftCode(int value){
 	currentCode = codeCache.front();
 	while (currentCode != value) {
@@ -31,6 +40,12 @@ void shiftCode(int value){
 	codeCache.push(rand() % six_digit);
 }
 
+/**
+ * Insertion point
+ * 
+ * @param argc number of CLI arguments
+ * @param argv vector of CLI arguments
+ */
 int main(int argc, char *argv[]){
 	if(argc < 2){
 		printf("Gimme a mode yo (car or something else)\n");
@@ -48,8 +63,9 @@ int main(int argc, char *argv[]){
 	unsigned long iterCount = 0;
 	bool first = true;
 	while(1){
-		// Car
+		// Car logic
 		if(isCar){
+			// Introduction
 			if(first){
 				printf("HELLO I AM CAR\n");
 				first = false;
@@ -84,6 +100,7 @@ int main(int argc, char *argv[]){
 	  }
 	  // Key
 	  else{
+		  // Introduction
 		  if(first){
 			printf("HELLO I AM KEY\n");
 			first = false;
