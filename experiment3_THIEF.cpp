@@ -107,7 +107,7 @@ int main(int argc, char *argv[]){
 				CRACKED = true;
 			}
 			// If time to yell, do
-			if(iterCount % BROADCAST_INTERVAL == 0 && CRACKED){
+			if(iterCount % BROADCAST_INTERVAL == 0){
 				printf("YELLIN\n");
 				long nextValue = nextRandom(value, a, b, m);
 				ctx.send_code(nextValue);
