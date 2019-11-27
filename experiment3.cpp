@@ -94,10 +94,17 @@ int main(int argc, char *argv[]){
 				}
 				else {
 					printf("Received %i\n", value);
-					if(find (codeCache.begin(), codeCache.end(), value) == codeCache.end()){
-						printf("Rolling code accepted (%i). Car is unlocked.\n", code);
-						shiftCode(code);
-						printf("New challenge code (%i).\n", currentCode);
+					
+					queue <int> copyCache = codeCache;
+					for(int i = 0; i < codeCache.size(); i++) {
+						int code = copyCache.front();
+						printf("Comparing to expected code %i.\n", code);
+						if(value == code) {
+							printf("Rolling code accepted (%i). Car is unlocked.\n", code);
+							shiftCode(code);
+							printf("New challenge code (%i).\n", currentCode);
+						}
+						copyCache.pop();
 					}
 				}
 				fflush(stdout);
