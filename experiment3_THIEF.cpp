@@ -107,7 +107,7 @@ int main(int argc, char *argv[]){
 				CRACKED = true;
 			}
 			// If time to yell, do
-			if(iterCount % BROADCAST_INTERVAL == 0){
+			if(codes.size() > 0 && iterCount % BROADCAST_INTERVAL == 0){
 				long nextValue = nextRandom(value, a, b, m);
 				printf("Next code in the sequence will be: %ld \n", nextValue);
 				ctx.send_code(value);
