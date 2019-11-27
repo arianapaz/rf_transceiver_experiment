@@ -113,7 +113,7 @@ int main(int argc, char *argv[]){
 	  else{
 		  // Introduction
 		  if(first){
-			printf("HELLO I AM KEY\n");
+			printf("HELLO I AM KEY\nWaiting for code %i\n", currentCode);
 			first = false;
 		  }
 		  // If message there
