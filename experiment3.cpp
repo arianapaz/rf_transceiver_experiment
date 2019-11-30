@@ -46,7 +46,7 @@ void shiftCode(int value){
 	currentCode = codeCache.front();
 	while (currentCode != value) {
 		codeCache.erase(codeCache.begin());
-		codeCache.push_back(random(currentCode));
+		codeCache.push_back(random(codeCache.end()));
 		currentCode = codeCache.front();
 		numShifted++;
 	}
@@ -129,10 +129,16 @@ int main(int argc, char *argv[]){
 			else{
 				printf("Received message %i\n", value);
 				// Received valid challenge message
-				if(value == currentCode || find(codeCache.begin(), codeCache.end(), value) != codeCache.end()){
+				bool codeIsInCache = find(codeCache.begin(), codeCache.end(), value) != codeCache.end();
+				if(value == currentCode || codeIsInCache){
 					printf("Challenge message received (%i). Updating cache...", value);
-					shiftCode(value);
-					currentCode = random(currentCode);
+					if(codeIsInCache){
+						shiftCode(value);
+					}
+					// Get next rolling code
+					codeCache.erase(codeCache.begin());
+					codeCache.push_back(random(codeCache.end()));
+					currentCode = codeCache.front();
 					ctx.send_code(currentCode);
 					printf("Sending rolling code (%i)...\n", currentCode);
 				}
