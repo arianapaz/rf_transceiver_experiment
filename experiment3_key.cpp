@@ -53,11 +53,18 @@ void shiftCode(int value){
 		currentChallengeMessage = codeCache.front();
 		numShifted++;
 	}
+	// Set next challenge message
+	currentChallengeMessage = codeCache.front();
 	codeCache.erase(codeCache.begin());
 	codeCache.push_back(random(codeCache.back()));
-	currentChallengeMessage = codeCache.front();
 	numShifted++;
-	printf("cache shifted by %i codes\n", numShifted);
+
+	// Get next roll code
+	currentRollingCode = codeCache.front();
+	// Remove next roll code from cache
+	codeCache.erase(codeCache.begin());
+	codeCache.push_back(random(codeCache.back()));
+	printf("cache shifted by %i codes.\n", numShifted);
 }
 
 /**
@@ -98,13 +105,6 @@ int main(int argc, char *argv[]){
 					printf("Updating cache...");
 					shiftCode(value);
 					printf("New challenge message: %i\n", currentChallengeMessage);
-					// Get next roll code
-					codeCache.erase(codeCache.begin());
-					codeCache.push_back(random(codeCache.back()));
-					currentRollingCode = codeCache.front();
-					// Remove next roll code from cache
-					codeCache.erase(codeCache.begin());
-					codeCache.push_back(random(codeCache.back()));
 				}
 				// Send current roll code
 				printf("Sending rolling code (%i)...\n", currentRollingCode);
