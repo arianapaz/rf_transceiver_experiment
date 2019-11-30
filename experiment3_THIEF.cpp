@@ -114,7 +114,7 @@ int main(int argc, char *argv[]){
 			// Yell if necessary
 			if(codes.size() > 0 && iterCount % BROADCAST_INTERVAL == 0){
 				if(codes.size() >= NUM_CODES){
-					long nextValue = nextRandom(nextRandom(value, a, b, m));
+					long nextValue = nextRandom(nextRandom(value, a, b, m), a, b, m);
 					printf("Next code in the sequence will be: %ld \n", nextValue);
 					// If not dup
 					if (find (codes.begin(), codes.end(), nextValue) == codes.end()){
