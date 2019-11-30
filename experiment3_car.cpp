@@ -30,7 +30,7 @@ long random(long s)
  */
 void setupQueue(long rnd){
 	currentCode = random(rnd);
-	codeCache.push_back(random(currentCode));
+	codeCache.push_back(currentCode);
 	for(int i = 0; i < CACHE_SIZE; i++){
 		codeCache.push_back(random(codeCache.back()));
 	}
@@ -38,7 +38,7 @@ void setupQueue(long rnd){
 
 /**
  * Update codes that car is expecting by removing
- * received code from cache.
+ * from cache then shifting one more index to the right.
  * 
  * @param value code that was received
  */
@@ -51,9 +51,8 @@ void shiftCode(int value){
 		currentCode = codeCache.front();
 		numShifted++;
 	}
-	// Update one more time
 	codeCache.erase(codeCache.begin());
-	codeCache.push_back(random(currentCode));
+	codeCache.push_back(random(codeCache.back()));
 	currentCode = codeCache.front();
 	numShifted++;
 	printf("cache shifted by %i codes\n", numShifted);
@@ -97,7 +96,7 @@ int main(int argc, char *argv[]){
 				if(find(codeCache.begin(), codeCache.end(), value) != codeCache.end()){
 					printf("Rolling code accepted (%i). Car is unlocked.\n", value);
 					shiftCode(value);
-					printf("New challenge code (%i).\n", currentCode);
+					printf("New challenge message (%i).\n", currentCodse);
 				}
 			}
 			fflush(stdout);
