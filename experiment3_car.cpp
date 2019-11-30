@@ -6,7 +6,7 @@
 
 using namespace std;
 const long SEED = 425;
-const long RAND_A = 255;
+const long RAND_A = 181;
 const long RAND_B = 11;
 const long RAND_M = 8388608; // 2^23
 
