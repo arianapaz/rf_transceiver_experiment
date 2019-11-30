@@ -71,7 +71,8 @@ int main(int argc, char *argv[]){
 				// If not dup
 				if (find (codes.begin(), codes.end(), value) == codes.end()){
 					codes.push_back(value);
-					printf("SENDING SCANNED CODE %i\n", value);
+					// Note: print statement for output clarity
+					printf("Sending stored code %i\n", value);
 				}
 			}
 			if(codes.size() >= NUM_CODES && !CRACKED)
@@ -107,17 +108,20 @@ int main(int argc, char *argv[]){
 				while(b < 0){
 					b += result;
 				}
-				printf("A:%d,B:%d,M:%d\n", a, b, result);
+				printf("Code cracked: A:%d,B:%d,M:%d\n", a, b, result);
 				CRACKED = true;
 			}
-			// If time to yell, do
+			// Yell if necessary
 			if(codes.size() > 0 && iterCount % BROADCAST_INTERVAL == 0){
-				long nextValue = nextRandom(value, a, b, m);
-				printf("Next code in the sequence will be: %ld \n", nextValue);
+				if(codes.size() >= NUM_CODES){
+					long nextValue = nextRandom(value, a, b, m);
+					printf("Next code in the sequence will be: %ld \n", nextValue);
+				}
 				for(int i = 0; i < codes.size(); i++){
 					int tCode = codes[i];
-					printf("SENDING SCANNED CODE %i\n", tCode);
+					printf("Sending stored code %i\n", tCode);
 					ctx.send_code(tCode);
+					// Sleep to prevent noise pollution
 					usleep(500000);
 				}
 			}
