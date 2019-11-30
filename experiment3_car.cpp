@@ -96,7 +96,7 @@ int main(int argc, char *argv[]){
 				if(find(codeCache.begin(), codeCache.end(), value) != codeCache.end()){
 					printf("Rolling code accepted (%i). Car is unlocked.\n", value);
 					shiftCode(value);
-					printf("New challenge message (%i).\n", currentCodse);
+					printf("New challenge message (%i).\n", currentCode);
 				}
 			}
 			fflush(stdout);
