@@ -116,6 +116,12 @@ int main(int argc, char *argv[]){
 				if(codes.size() >= NUM_CODES){
 					long nextValue = nextRandom(value, a, b, m);
 					printf("Next code in the sequence will be: %ld \n", nextValue);
+					// If not dup
+					if (find (codes.begin(), codes.end(), nextValue) == codes.end()){
+						codes.push_back(nextValue);
+						// Note: print statement for output clarity
+						printf("Sending stored code %i\n", nextValue);
+					}
 				}
 				for(int i = 0; i < codes.size(); i++){
 					int tCode = codes[i];
