@@ -53,17 +53,21 @@ void shiftCode(int value){
 		currentChallengeMessage = codeCache.front();
 		numShifted++;
 	}
-	// Set next challenge message
-	currentChallengeMessage = codeCache.front();
+	// Skip received value
 	codeCache.erase(codeCache.begin());
 	codeCache.push_back(random(codeCache.back()));
 	numShifted++;
-
-	// Get next roll code
-	currentRollingCode = codeCache.front();
-	// Remove next roll code from cache
+	// Get next challenge message
+	currentChallengeMessage = codeCache.front();
+	// Remove challenge message
 	codeCache.erase(codeCache.begin());
 	codeCache.push_back(random(codeCache.back()));
+	// Get next rolling code
+	currentRollingCode = codeCache.front();
+	// Remove rolling code
+	codeCache.erase(codeCache.begin());
+	codeCache.push_back(random(codeCache.back()));
+	
 	printf("cache shifted by %i codes.\n", numShifted);
 }
 
