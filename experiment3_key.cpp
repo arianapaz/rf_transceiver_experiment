@@ -31,10 +31,10 @@ long random(long s)
 void setupQueue(long rnd){
 	currentChallengeMessage = random(rnd);
 	codeCache.push_back(random(currentChallengeMessage));
-	currentRollingCode = codeCache.front();
 	for(int i = 0; i < CACHE_SIZE; i++){
 		codeCache.push_back(random(codeCache.back()));
 	}
+	currentRollingCode = codeCache.front();
 }
 
 /**
@@ -89,7 +89,7 @@ int main(int argc, char *argv[]){
 			// Received valid challenge message
 			bool codeIsInCache = find(codeCache.begin(), codeCache.end(), value) != codeCache.end();
 			if(value == currentChallengeMessage || codeIsInCache){
-				printf("Challenge message received (%i).\n", value);
+				printf("Challenge message received (%i). Current rolling code (%i)\n", value, currentRollingCode);
 				if(codeIsInCache){
 					printf("Updating cache...");
 					shiftCode(value);
