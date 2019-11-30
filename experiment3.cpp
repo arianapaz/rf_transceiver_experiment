@@ -46,7 +46,7 @@ void shiftCode(int value){
 	currentCode = codeCache.front();
 	while (currentCode != value) {
 		codeCache.erase(codeCache.begin());
-		codeCache.push_back(random(codeCache.end()));
+		codeCache.push_back(random(codeCache.back()));
 		currentCode = codeCache.front();
 		numShifted++;
 	}
@@ -137,7 +137,7 @@ int main(int argc, char *argv[]){
 					}
 					// Get next rolling code
 					codeCache.erase(codeCache.begin());
-					codeCache.push_back(random(codeCache.end()));
+					codeCache.push_back(random(codeCache.back()));
 					currentCode = codeCache.front();
 					ctx.send_code(currentCode);
 					printf("Sending rolling code (%i)...\n", currentCode);
