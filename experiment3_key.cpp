@@ -53,9 +53,9 @@ void shiftCode(int value){
 		currentChallengeMessage = codeCache.front();
 		numShifted++;
 	}
+	currentChallengeMessage = codeCache.front();
 	codeCache.erase(codeCache.begin());
 	codeCache.push_back(random(codeCache.back()));
-	currentChallengeMessage = codeCache.front();
 	numShifted++;
 	printf("cache shifted by %i codes\n", numShifted);
 }
