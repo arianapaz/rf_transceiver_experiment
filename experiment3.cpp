@@ -42,14 +42,20 @@ void setupQueue(long rnd){
  * @param value code that was received
  */
 void shiftCode(int value){
+	int numShifted = 0;
 	currentCode = codeCache.front();
 	while (currentCode != value) {
 		codeCache.erase(codeCache.begin());
 		codeCache.push_back(random(currentCode));
 		currentCode = codeCache.front();
+		numShifted++;
 	}
+	// Update one more time
 	codeCache.erase(codeCache.begin());
 	codeCache.push_back(random(currentCode));
+	currentCode = codeCache.front();
+	numShifted++;
+	printf("cache shifted by %i codes\n", numShifted);
 }
 
 /**
@@ -103,8 +109,8 @@ int main(int argc, char *argv[]){
 					}
 				}
 				fflush(stdout);
-		  } 
-		ctx.resetAvailable();
+		  	} 
+			ctx.resetAvailable();
 	  }
 	  // Key
 	  else{
@@ -122,18 +128,18 @@ int main(int argc, char *argv[]){
 			}
 			else{
 				printf("Received message %i\n", value);
-				// Good code
-				if(value == currentCode){
-					usleep(1000);
-					ctx.resetAvailable();
-					long temp = random(currentCode);
-					ctx.send_code(temp);
-					printf("Challenge message received (%i). Sending response (%i)...\n", value, temp);
+				// Received valid challenge message
+				if(find(codeCache.begin(), codeCache.end(), value) != codeCache.end()){
+					printf("Challenge message received (%i). Updating cache...", value);
+					shiftCode(value);
+					currentCode = random(currentCode);
+					ctx.send_code(currentCode);
+					printf("Sending rolling code (%i)...\n", currentCode);
 				}
 			}
 			fflush(stdout);
 		  }
-		ctx.resetAvailable();
+		  ctx.resetAvailable();
 	  }
       usleep(100);	// Sleep for 0.0001 seconds
       iterCount++;
