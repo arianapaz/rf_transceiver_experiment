@@ -8,6 +8,7 @@
 using namespace std;
 
 const int BROADCAST_INTERVAL = 30000;
+const int NUM_CODES = 5;
 
 struct GCDReturn {
 	int a, b, c;
@@ -73,9 +74,9 @@ int main(int argc, char *argv[]){
 					printf("SENDING SCANNED CODE %i\n", value);
 				}
 			}
-			if(codes.size() >= 10 && !CRACKED)
+			if(codes.size() >= NUM_CODES && !CRACKED)
 			{
-				for (long i = 1; i < 7; i++)
+				for (long i = 1; i < NUM_CODES; i++)
 				{
 					t.push_back(codes[i] - codes[i-1]);
 				}
