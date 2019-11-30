@@ -83,7 +83,7 @@ int main(int argc, char *argv[]){
 			first = false;
 		}
 		if(iterCount % CHALLENGE_INTERVAL == 0){
-			printf("Sending challenge message...\n");
+			printf("Sending challenge message...%i\n", currentCode);
 			ctx.send_code(currentCode);
 		}
 		// Receive incoming messages
