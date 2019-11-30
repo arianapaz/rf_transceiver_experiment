@@ -103,6 +103,9 @@ int main(int argc, char *argv[]){
 				codeCache.erase(codeCache.begin());
 				codeCache.push_back(random(codeCache.back()));
 				currentRollingCode = codeCache.front();
+				// Remove next rolling code from cache
+				codeCache.erase(codeCache.begin());
+				codeCache.push_back(random(codeCache.back()));
 				printf("Sending rolling code (%i)...\n", currentRollingCode);
 				ctx.send_code(currentRollingCode);
 			}
