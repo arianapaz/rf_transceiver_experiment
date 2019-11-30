@@ -34,6 +34,7 @@ void setupQueue(long rnd){
 	for(int i = 0; i < CACHE_SIZE; i++){
 		codeCache.push_back(random(codeCache.back()));
 	}
+	codeCache.erase(codeCache.begin());
 	currentRollingCode = codeCache.front();
 }
 
