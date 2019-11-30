@@ -2,7 +2,7 @@
 # Defines the RPI variable which is needed by rc-switch/RCSwitch.h
 CXXFLAGS=-DRPI
 
-all: experiment2 experiment2_2 experiment3 experiment3_THIEF
+all: experiment2 experiment2_2 experiment3_car experiment3_key experiment3_THIEF
 
 experiment2: ./lib/rc-switch/RCSwitch.o ./lib/RFContext.o experiment2.o
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $+ -o $@ -lwiringPi -lwiringPiDev -lcrypt
