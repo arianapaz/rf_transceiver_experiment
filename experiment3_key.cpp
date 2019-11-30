@@ -101,11 +101,11 @@ int main(int argc, char *argv[]){
 					printf("New challenge message: %i\n", currentChallengeMessage);
 				}
 				// Get next rolling code
-				codeCache.erase(codeCache.begin());
-				codeCache.push_back(random(codeCache.back()));
 				currentRollingCode = codeCache.front();
 				printf("Sending rolling code (%i)...\n", currentRollingCode);
 				ctx.send_code(currentRollingCode);
+				codeCache.erase(codeCache.begin());
+				codeCache.push_back(random(codeCache.back()));
 			}
 		}
 		fflush(stdout);
