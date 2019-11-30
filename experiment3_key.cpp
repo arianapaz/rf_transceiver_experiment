@@ -45,13 +45,16 @@ void setupQueue(long rnd){
  */
 void shiftCode(int value){
 	int numShifted = 0;
-	currentRollingCode = codeCache.front();
-	while (currentRollingCode != value) {
+	currentChallengeMessage = codeCache.front();
+	while (currentChallengeMessage != value) {
 		codeCache.erase(codeCache.begin());
 		codeCache.push_back(random(codeCache.back()));
-		currentRollingCode = codeCache.front();
+		currentChallengeMessage = codeCache.front();
 		numShifted++;
 	}
+	codeCache.erase(codeCache.begin());
+	codeCache.push_back(random(codeCache.back()));
+	currentChallengeMessage = codeCache.front();
 	numShifted++;
 	printf("cache shifted by %i codes\n", numShifted);
 }
