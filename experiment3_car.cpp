@@ -54,6 +54,8 @@ void shiftCode(int value){
 	codeCache.erase(codeCache.begin());
 	codeCache.push_back(random(codeCache.back()));
 	currentCode = codeCache.front();
+	codeCache.erase(codeCache.begin());
+	codeCache.push_back(random(codeCache.back()));
 	numShifted++;
 	printf("cache shifted by %i codes\n", numShifted);
 }
