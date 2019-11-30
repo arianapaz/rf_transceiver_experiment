@@ -89,7 +89,7 @@ int main(int argc, char *argv[]){
 		  printf("ERR: Unknown encoding\n");
 		}
 		else{
-			printf("Received message %i\n", value);
+			printf("Received message %i, expecting %i\n", value, currentChallengeMessage);
 			// Received valid challenge message
 			bool codeIsInCache = find(codeCache.begin(), codeCache.end(), value) != codeCache.end();
 			if(value == currentChallengeMessage || codeIsInCache){
