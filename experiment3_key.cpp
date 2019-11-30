@@ -97,7 +97,6 @@ int main(int argc, char *argv[]){
 				if(codeIsInCache){
 					printf("Updating cache...");
 					shiftCode(value);
-					currentChallengeMessage = value;
 					printf("New challenge message: %i\n", currentChallengeMessage);
 				}
 				// Get next rolling code
