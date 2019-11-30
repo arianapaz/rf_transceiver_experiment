@@ -29,12 +29,10 @@ long random(long s)
  * Setup the code cache by adding CACHE_SIZE codes to accepted set.
  */
 void setupQueue(long rnd){
-	currentCode = random(rnd);
-	codeCache.push_back(currentCode);
+	codeCache.push_back(random(rnd));
 	for(int i = 0; i < CACHE_SIZE; i++){
 		codeCache.push_back(random(codeCache.back()));
 	}
-	codeCache.erase(codeCache.begin());
 }
 
 /**
@@ -70,8 +68,8 @@ void shiftCode(int value){
 int main(int argc, char *argv[]){
 	RFContext ctx = RFContext();
 	
-	long rnd = random(SEED);
-	setupQueue(rnd);
+	currentCode = random(SEED);
+	setupQueue(currentCode);
 	
 	// Run forever
 	unsigned long iterCount = 0;
