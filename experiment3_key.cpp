@@ -30,7 +30,7 @@ long random(long s)
  */
 void setupQueue(long rnd){
 	currentChallengeMessage = random(rnd);
-	codeCache.push_back(random(currentChallengeMessage));
+	codeCache.push_back(currentChallengeMessage);
 	for(int i = 0; i < CACHE_SIZE; i++){
 		codeCache.push_back(random(codeCache.back()));
 	}
