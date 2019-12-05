@@ -3,57 +3,33 @@
 ## Description
 This project aims to replicate vulnerabilities of modern RFID security systems, more specifically, those used for passive keyless entry (PKE) in modern vehicles. The goal is to conduct several experiments to demonstrate the existing flaws of PKE systems. Hence, we will emulate PKE systems by building RFID devices using: Raspberry Pis, RF-433-MHZ, F/F cables, and code in Python and C for creating the encryption protocol.
 
-## Table of Contents
-Below you can find a list of the experiments that will be performed and documented here.
+## How To Test The Project
+### Set up the Hardware and Software
+Check out the hardware and hardware setup sections in the [wiki page](../../wiki)
+### Run the Code
+From the command line on the Raspberry Pi:
+- Clone this repo: `git clone https://github.com/arianapaz/rf_transceiver_experiment.git`
+- Go into the `sample` folder: `cd sample`
+- Run a make all command: `make all`
+- Go back to the original folder: `cd ..`
+- Run a make all command: `make all`
 
-|Task | Description|
-|--|--|
-|[Hardware](#Hardware)| Description of the hardware to be used|
-|[Hardware Setup](#Hardware-Setup) | Description of how the hardware components will be put together|
-|[Software](#Software) | Description of the software needed and how to install it |
-|[Experiments](#Experiments) | <li> Sanity check. Prove that we can put the hardware together and recreate an RFID </li> <li>Simulation of an replay attack</li><li>Simulation of a relay attack (with basic  encryption)</li><li>Simulation of a relay attack (with more advanced encryption)</li>|
-|[Problems Encountered](#Problems-Encountered) | List of modifications to hardware and software encountered |
-|[Credits](#Credits) | People that contributed to this project|
+Now you can do one of two things: 
+* Test our scripts by running the experiment executables:
+  - To simulate the car or the key (without rolling codes) `./experiment2 [car or key]`
+  - To simulate an attacker that copies/sends the car/key codes `./experiment2_2`
+  - To simulate the car (with rolling codes) `./experiment3_car`
+  - To simulate the key (with rolling codes) `./experiment3_key`
+  - To simulate the person trying to crack the rolling codes`./experiment3_THIEF`
+  - To understand the experiments better go to the software section in the [wiki page](../../wiki)
+* You can test your hardware using the more simple libraries under the `sample` folder
+  - Send codes with the C++ library `./codesend [decimalcode]`
+  - Sniff codes with the C++ library `./RFSniffer`
+  - Send codes with the Python library `python3 send.py [decimalcode]`
+  - Sniff codes with the Python library `python3 receive.py`
 
-## Hardware
-To recreate a PKE system we will need the following hardware:
-- Raspberry Pi 2 or 3 (3 of them)
-  - https://www.raspberrypi.org/products/
-  - https://www.amazon.com/s?k=raspberry+pi
-  <img src="/images/raspberry_pi.jpg" width="360">
-- 4 Amp Power Adapter (3 of them)
-  - https://www.amazon.com/s?k=4A+power+adapter+raspberry+pi
-  <img src="/images/adapter.jpg" width="360">
-- Micro SD (3 of them with at least 16GB)
-  - https://www.amazon.com/s?k=micro+sd+card
-  <img src="/images/sd_card.jpg" width="360">
-- Female to Female jumper cables (18 cables total)
-  - https://www.amazon.com/s?k=female+to+female+cables
-  <img src="/images/cables.jpg" width="360">
-- 433 MHz Transceiver (3 of them)
-  - https://www.amazon.com/s?k=433mhz+transceiver+raspberry+pi
-  <img src="/images/transceiver.png" width="360">
-- Antennas (6 of them)
-
-  <img src="/images/cable.jpg" width="360">
-
-## Hardware Setup
-To set up the hardware follow the instructions:
-- You will need to get wire the transmitter and receiver to the Raspberry Pi
-  - **Raspberry Pi pin locations**:
-  ![image](/images/gpio_pins.png)
-  - **Wiring**:
-  <img src="/images/wiring.png" width="480">
-
-
-## Software
-- [rpi-rf](https://pypi.org/project/rpi-rf/): Python module for sending and receiving signals with Raspberry Pi.
-- [433Utils](https://github.com/ninjablocks/433Utils): C module for sending and receiving signals with Raspberry Pi.
-
-## Experiments
-- Experiment 1:
-
-## Problems Encountered
+NOTE: for more information on the libraries we used for to [433Utils](https://github.com/ninjablocks/433Utils) and [rpi-rf](https://github.com/milaq/rpi-rf)
 
 ## Credits
 This project was developed by Ariana Paz, Cameron Bost, and Cody Standridge.
+This project is loosely based on [433Utils](https://github.com/ninjablocks/433Utils) and [rpi-rf](https://github.com/milaq/rpi-rf)
