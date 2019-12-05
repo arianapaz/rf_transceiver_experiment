@@ -3,6 +3,8 @@
 ## Description
 This project aims to replicate vulnerabilities of modern RFID security systems, more specifically, those used for passive keyless entry (PKE) in modern vehicles. The goal is to conduct several experiments to demonstrate the existing flaws of PKE systems. Hence, we will emulate PKE systems by building RFID devices using: Raspberry Pis, RF-433-MHZ, F/F cables, and code in Python and C for creating the encryption protocol.
 
+For an full explanation on the hardwar, software, and experiments please refer to the [wiki page](../../wiki)
+
 ## How To Test The Project
 ### Set up the Hardware and Software
 Check out the hardware and hardware setup sections in the [wiki page](../../wiki)
