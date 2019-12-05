@@ -6,6 +6,7 @@ This project aims to replicate vulnerabilities of modern RFID security systems, 
 ## How To Test The Project
 ### Set up the Hardware and Software
 Check out the hardware and hardware setup sections in the [wiki page](../../wiki)
+
 ### Run the Code
 From the command line on the Raspberry Pi:
 - Clone this repo: `git clone https://github.com/arianapaz/rf_transceiver_experiment.git`
@@ -28,8 +29,9 @@ Now you can do one of two things:
   - Send codes with the Python library `python3 send.py [decimalcode]`
   - Sniff codes with the Python library `python3 receive.py`
 
-NOTE: for more information on the libraries we used for to [433Utils](https://github.com/ninjablocks/433Utils) and [rpi-rf](https://github.com/milaq/rpi-rf)
+**NOTE**: for more information on the libraries we used for to [433Utils](https://github.com/ninjablocks/433Utils) and [rpi-rf](https://github.com/milaq/rpi-rf)
 
 ## Credits
 This project was developed by Ariana Paz, Cameron Bost, and Cody Standridge.
+
 This project is loosely based on [433Utils](https://github.com/ninjablocks/433Utils) and [rpi-rf](https://github.com/milaq/rpi-rf)
